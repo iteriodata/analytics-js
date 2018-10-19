@@ -1,0 +1,40 @@
+.app {
+  text-align: center;
+}
+
+.app .app__logo {
+  animation: App-logo-spin infinite 20s linear;
+  height: 80px;
+}
+
+.app .app__header {
+  background-color: #222;
+  height: 150px;
+  padding: 20px;
+  color: white;
+}
+
+.app .app__title {
+  font-size: 1.5em;
+}
+
+.app .app__navigation {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  justify-content: space-around;
+  border: 1px solid black;
+}
+
+.app .app__navigation a {
+  color: black;
+  text-decoration: none;
+}
+.app .app__navigation a.active {
+  color: grey;
+}
+
+@keyframes App-logo-spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}

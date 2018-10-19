@@ -1,0 +1,82 @@
+{
+  "name": "analytics-js",
+  "version": "1.0.0",
+  "description": "",
+  "author": "Webster Cook <webster@iteriodata.com>",
+  "license": "BSD, Iterio Inc, 2018",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/iteriodata/analytics-js"
+  },
+  "watch": {
+    "build:dev": {
+      "patterns": [
+        "src"
+      ],
+      "extensions": ".js",
+      "inherit": true
+    }
+  },
+  "scripts": {
+    "copy:to:demo": "cpx './dist/*.{js,js.map}' ./tests/demo/public/tmp",
+    "serve:demo": "npm run start --prefix tests/demo",
+    "selenium": "selenium-server -port 4444",
+    "test:e2e": "./node_modules/nightwatch/bin/nightwatch tests/e2e",
+    "test:dev": "cross-env NODE_ENV=dev ./node_modules/karma/bin/karma start karma.conf.js",
+    "test": "cross-env NODE_ENV=prod ./node_modules/karma/bin/karma start karma.conf.js",
+    "lint:dev": "node_modules/.bin/eslint -c .eslintrc.dev.js src/",
+    "lint": "node_modules/.bin/eslint src/",
+    "webpack:dev": "cross-env COMMIT_HASH=`git rev-parse HEAD` webpack --mode development",
+    "webpack": "cross-env COMMIT_HASH=`git rev-parse HEAD` webpack --mode production",
+    "build:dev:watch": "npm-watch build:dev",
+    "build:dev": "run-s lint:dev test:dev webpack:dev copy:to:demo",
+    "build": "run-s lint test webpack copy:to:demo"
+  },
+  "devDependencies": {
+    "babel-core": "^6.26.0",
+    "babel-loader": "^7.1.4",
+    "babel-plugin-istanbul": "^4.1.6",
+    "babel-plugin-transform-runtime": "^6.23.0",
+    "babel-preset-env": "^1.6.1",
+    "chai": "^4.1.2",
+    "chromedriver": "^2.37.0",
+    "clean-webpack-plugin": "^0.1.19",
+    "cpx": "^1.5.0",
+    "cross-env": "^5.1.4",
+    "eslint": "^4.18.2",
+    "eslint-config-google": "^0.9.1",
+    "eslint-loader": "^2.0.0",
+    "eslint-plugin-mocha": "^5.0.0",
+    "jquery": "^3.3.1",
+    "karma": "^2.0.0",
+    "karma-chai": "^0.1.0",
+    "karma-chrome-launcher": "^2.2.0",
+    "karma-coverage": "^1.1.1",
+    "karma-firefox-launcher": "^1.1.0",
+    "karma-mocha": "^1.3.0",
+    "karma-mocha-reporter": "^2.2.5",
+    "karma-opera-launcher": "^1.0.0",
+    "karma-safari-launcher": "^1.0.0",
+    "karma-sinon": "^1.0.5",
+    "karma-webpack": "^3.0.0",
+    "mocha": "^5.1.0",
+    "nightwatch": "^0.9.20",
+    "nightwatch-xhr": "^0.4.3",
+    "npm-run-all": "^2.1.1",
+    "npm-watch": "^0.3.0",
+    "sinon": "^4.5.0",
+    "uglifyjs-webpack-plugin": "^1.2.5",
+    "webpack": "^4.6.0",
+    "webpack-cli": "^2.0.15"
+  },
+  "dependencies": {
+    "adblock-detect": "^1.0.5",
+    "cryptohat": "^1.0.1",
+    "fingerprintjs2": "^1.6.1",
+    "js-base64": "^2.4.3",
+    "js-cookie": "^2.2.0",
+    "lodash": "^4.17.5",
+    "raven-js": "^3.25.2",
+    "uuid": "^3.2.1"
+  }
+}
