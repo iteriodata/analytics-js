@@ -13,7 +13,7 @@ npm run build:dev:watch
 ````
 
 
-### Build deploy to cloudfronT
+### Build and deploy to AWS Cloudfront
 
 ```shell
 # update dependencies
